@@ -239,7 +239,7 @@ class BaseSQLAsyncDrivenBaseRepository(AbstractBaseRepository):
             session.add(new_obj)
             await session.commit()
 
-        return new_obj
+        return data
 
     @classmethod
     async def create_bulk(

@@ -6,8 +6,7 @@ from typing import List
 
 import uuid
 from environs import Env
-# from pydantic import BaseSettings as PydanticSettings
-from pydantic_settings import BaseSettings as PydanticSettings
+from pydantic import BaseSettings as PydanticSettings
 from slugify import slugify
 
 env = Env()

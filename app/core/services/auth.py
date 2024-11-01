@@ -1,5 +1,3 @@
-# app/auth.py
-
 from datetime import datetime, timedelta
 from typing import Union, Optional
 from jose import JWTError, jwt

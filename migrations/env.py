@@ -14,14 +14,21 @@ from app.config.settings import settings
 
 config = context.config
 
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
+
+
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
 fileConfig(config.config_file_name)  # type: ignore
 
 
+from app.core.models.mixins import *
 from app.core.models.users import *
 from app.core.models.preferences import *
 from app.core.models.chat import *
+from app.core.models.user_chats import *
 from app.core.models.message import *
 
 

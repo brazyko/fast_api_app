@@ -1,10 +1,12 @@
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
+from sqlalchemy import Column, Integer, String, Boolean
 from sqlalchemy.ext.declarative import declarative_base
+
+from app.core.models.mixins import PKMixin
 
 Base = declarative_base()
 
 
-class Preferences(Base):
+class Preferences(Base, PKMixin):
     __tablename__ = "preferences"
 
     id = Column(Integer, primary_key=True, index=True)

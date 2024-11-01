@@ -13,4 +13,3 @@ class MessageType(Enum):
 class ChatType(Enum):
     PRIVATE = "private"
     GROUP = "group"
-    ADMIN_ONLY_GROUP = "admin_only_group"
