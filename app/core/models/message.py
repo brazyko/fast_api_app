@@ -1,19 +1,16 @@
-from datetime import datetime
-
-from sqlalchemy import Column, Integer, String, DateTime, Text, ForeignKey, Boolean
-from sqlalchemy.orm import relationship, declarative_base
+from sqlalchemy import Column, String, Integer, DateTime, Numeric, Boolean, Index
+from sqlalchemy.ext.declarative import declarative_base
+from app.core.models.mixins import PKMixin
 
 Base = declarative_base()
 
-class Message(Base):
-    __tablename__ = "messages"
-    id = Column(Integer, primary_key=True, index=True)
-    chat_id = Column(Integer)
-    sender_id = Column(Integer)
-    message_type = Column(String, nullable=False)
-    content = Column(Text, nullable=True)
-    sent_at = Column(DateTime, nullable=False, default=datetime.utcnow)
-    is_read = Column(Boolean, default=False)
 
-    sender = relationship("User", backref="sent_messages")
-    chat = relationship("Chat", back_populates="messages")
+class UserMessage(Base):
+    __tablename__ = "user_messages"
+
+    user_id = Column(Integer, primary_key=True)
+    chat_id = Column(Integer, primary_key=True)
+    sent_at = Column(DateTime, nullable=True, default=None)
+    seen_at = Column(DateTime, nullable=True, default=None)
+    content = Column(String(2048), default=None)
+    reply_to = Column(Integer, default=None)
