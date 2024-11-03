@@ -2,17 +2,17 @@ import os
 import pathlib
 import secrets
 import sys
+import uuid
 from typing import List
 
-import uuid
 from environs import Env
-from pydantic import BaseSettings as PydanticSettings
+# from pydantic import BaseSettings as PydanticSettings
 from slugify import slugify
 
 env = Env()
 
 
-class SettingsBase(PydanticSettings):
+class SettingsBase():
     ROOT_DIR: str = os.path.abspath(os.path.dirname("src"))
     STATIC_DIR: str = f"{pathlib.Path().resolve().parent.parent}/static"
 
